@@ -5,18 +5,18 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
- * Klasa SimpleBall reprezentuje piłkę, którą możemy utworzyć.
- * Jest klasą bazową dla klasy {@link Ball}.
- * Obiekt klasy SimpleBall różni się od obiektu klasy Ball tym,
- * że nie służy do wykrycia kolizji pomiędzy obiektem klasy {@link Player}.
- * 
- * Obiekt tej klasy jest tworzony po stronie klienta chcącego dołączyć do serwera.
- * 
+ * Класс SimpleBall представляет мяч, который мы можем создать.
+ * Он является базовым классом для класса {@link Ball}.
+ * Объект класса SimpleBall отличается от объекта класса Ball тем,
+ * что не используется для обнаружения коллизий с объектом {@link Player}.
+ *
+ * Объект этого класса создается на стороне клиента, желающего подключиться к серверу.
+ *
  * @author Rafał Migda
  */
 
 public class SimpleBall extends Entity{
-    int[] scorePlayer1 = new int[2]; // tablica na wynik scorePlyer1[0] -> punkty, scorePlyer1[1] -> sety
+    int[] scorePlayer1 = new int[2]; // Массив для результатов: scorePlyer1[0] -> очки, scorePlyer1[1] -> сеты
     int[] scorePlayer2 = new int[2];
     public SimpleBall(BufferedImage image) {
         super(image);
@@ -28,78 +28,77 @@ public class SimpleBall extends Entity{
         scorePlayer2[1]=0;
     }
     /**
-     * Metoda pozwalająca sprawdzić czy nastąpiła kolizja
-     * z obiektem klasy {@link Player}.
-     * @param player wskazuje odpowiedniego gracza
+     * Метод, проверяющий столкновение с объектом класса {@link Player}.
+     * @param player указывает на соответствующего игрока
      */
     public void checkCollisionWith(Player player) {}
     /**
-     * Metoda rysująca aktualny wynik spotkania pomiędzy graczami.
-     * @param g Grafika2D
+     * Метод отрисовки текущего счета игры между игроками.
+     * @param g Графика2D
      */
     public void renderScore(Graphics2D g) {
         g.setColor(Color.WHITE);
-        g.drawString("GRACZ I      "+getSets1(), 50, 22); // wyświetl sety dla gracza 1
+        g.drawString("ИГРОК I      " + getSets1(), 50, 22); // показать сеты для игрока 1
         g.setColor(Color.YELLOW);
-        g.drawString(""+getPoints1(), 150, 22); // wyświetl punkty dla gracza 1
-        
+        g.drawString("" + getPoints1(), 150, 22); // показать очки для игрока 1
+
         g.setColor(Color.WHITE);
-        g.drawString("GRACZ II     "+getSets2(), 50, 42);
+        g.drawString("ИГРОК II     " + getSets2(), 50, 42);
         g.setColor(Color.YELLOW);
-        g.drawString(""+getPoints2(), 150, 42);
+        g.drawString("" + getPoints2(), 150, 42);
     }
     /**
-     * Metoda zwraca punkty Gracza 1.
-     * @return Aktualna liczba zdobytych punktów Gracza 1.
+     * Метод возвращает количество очков первого игрока.
+     * @return Текущее количество очков первого игрока.
      */
     public int getPoints1() {
         return scorePlayer1[0];
     }
     /**
-     * Metoda zwraca punkty Gracza 2.
-     * @return Aktualna liczba zdobytych punktów Gracza 2.
+     * Метод возвращает количество очков второго игрока.
+     * @return Текущее количество очков второго игрока.
      */
     public int getPoints2() {
         return scorePlayer2[0];
     }
     /**
-     * Metoda zwraca liczbę setów Gracza 1.
-     * @return Aktualna liczba zdobytych setów Gracza 1.
+     * Метод возвращает количество сетов первого игрока.
+     * @return Текущее количество сетов первого игрока.
      */
     public int getSets1() {
         return scorePlayer1[1];
     }
     /**
-     * Metoda zwraca liczbę setów Gracza 2.
-     * @return Aktualna liczba zdobytych setów Gracza 2.
+     * Метод возвращает количество сетов второго игрока.
+     * @return Текущее количество сетов второго игрока.
      */
     public int getSets2() {
         return scorePlayer2[1];
     }
     /**
-     * Metoda pozwala zmienić liczbę punktów Graczowi 1.
-     * @param score liczba, która ma zostać zapisana jako aktualny stan zdobytych punktów.
+     * Метод позволяет изменить количество очков для первого игрока.
+     * @param score число, которое будет сохранено как текущее количество очков.
      */
     public void setPoint1(int score) {
         scorePlayer1[0]=score;
     }
     /**
-     * Metoda pozwala zmienić liczbę punktów Graczowi 2.
-     * @param score liczba, która ma zostać zapisana jako aktualny stan zdobytych punktów.
+     * Метод позволяет изменить количество очков для второго игрока.
+     * @param score число, которое будет сохранено как текущее количество очков.
      */
     public void setPoint2(int score) {
         scorePlayer2[0]=score;
     }
     /**
-     * Metoda pozwala zmienić liczbę setów Graczowi 1.
-     * @param score liczba, która ma zostać zapisana jako aktualny stan zdobytych setów.
+     * Метод позволяет изменить количество сетов для первого игрока.
+     * @param score число, которое будет сохранено как текущее количество сетов.
      */
     public void setSet1(int score) {
         scorePlayer1[1]=score;
     }
     /**
-     * Metoda pozwala zmienić liczbę setów Graczowi 2.
-     * @param score liczba, która ma zostać zapisana jako aktualny stan zdobytych setów.
+     * Метод позволяет изменить количество сетов для второго игрока.
+     * @param score число, которое будет сохранено как текущее количество сетов.
      */
     public void setSet2(int score) {
         scorePlayer2[1]=score;

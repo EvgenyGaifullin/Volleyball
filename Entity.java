@@ -2,56 +2,62 @@ package prehistoricvolleyball;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
 /**
- * Klasa reprezentująca dowolny byt (np. piłkę, gracza).
- * @author Rafał Migda
+ * Класс, представляющий любой объект (например, мяч, игрока).
+ * @author Рафаэль Мигда
  */
 public abstract class Entity {
-    public double x, y, vx=0, vy=0;
+    public double x, y, vx = 0, vy = 0;
     public BufferedImage image;
     private Game game;
-    
+
     public Entity(BufferedImage image) {
         this.image = image;
     }
+
     /**
-     * Metoda aktualizująca prędkość i pozycje bytu.
+     * Метод обновления скорости и позиции объекта.
      */
     public void update() {}
+
     /**
-     * Metoda dzięki, której możemy narysować nasz byt.
-     * @param g Grafika2D
+     * Метод, позволяющий отрисовать объект.
+     * @param g Графика2D
      */
     public void render(Graphics2D g) {
-        g.drawImage(image,(int)x, (int)y,game);
+        g.drawImage(image, (int) x, (int) y, game);
     }
+
     /**
-     * Metoda pozwalająca zmienić pozycję bytu na osi X.
-     * @param x pozycja na osi X
+     * Метод устанавливает позицию объекта по оси X.
+     * @param x позиция по оси X
      */
     public void setX(double x) {
         this.x = x;
     }
+
     /**
-     * Metoda pozwalająca zmienić pozycję bytu na osi Y.
-     * @param y pozycja na osi Y
+     * Метод устанавливает позицию объекта по оси Y.
+     * @param y позиция по оси Y
      */
     public void setY(double y) {
         this.y = y;
     }
+
     /**
-     * Metoda zwraca aktualną pozycję bytu na osi X
-     * @return pozycja na osi X
+     * Метод возвращает текущую позицию объекта по оси X.
+     * @return позиция по оси X
      */
     public double getX() {
         return x;
     }
+
     /**
-     * Metoda zwraca aktualną pozycję bytu na osi Y
-     * @return pozycja na osi Y
+     * Метод возвращает текущую позицию объекта по оси Y.
+     * @return позиция по оси Y
      */
     public double getY() {
         return y;
     }
-    
 }
